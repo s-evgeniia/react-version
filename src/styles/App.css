@@ -1,0 +1,89 @@
+/*Обнуление базовых настроек*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.App {
+    width: auto;
+}
+
+/*Карточка товара*/
+.item__content {
+    height: auto;
+    width: 200px;
+    padding: 15px;
+
+    /*Рамка карточки товара*/
+    border: 2px solid teal;
+    border-radius: 15px;
+
+    display: grid;
+    gap: 10px;
+}
+
+/*Настройка размера изображения*/
+.item__content img {
+    width: 166px;
+    height: 166px;
+
+}
+
+/*Настройка панели цены и кнопки "Добавить в корзину"*/
+.item__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*Настройка распределения товаров на страницу*/
+.sell_items_list {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin: auto;
+}
+
+/*Настройка расположения кнопки посередине страницы*/
+.center_btn {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.page__wrapper {
+    margin-top: 30px;
+    display: flex;
+}
+
+.page {
+    padding: 10px;
+    border: 1px solid teal;
+    cursor: pointer;
+}
+
+.page__current {
+    border: 2px solid orange;
+    font-weight: bold;
+}
+
+.navbar {
+    height: 50px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    background: lightgray;
+}
+
+.navbar__links {
+    margin-left: auto;
+}

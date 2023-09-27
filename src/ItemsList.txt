@@ -1,0 +1,56 @@
+[
+    {
+      "id": 1,
+      "title": 'Jacket',
+      "src": '#',
+      "description": 'Item description',
+      "size": '42',
+      "color": 'red',
+      "price": '100'
+    },
+    {
+      "id": 2,
+      "title": 'T-shirt',
+      "src": '#',
+      "description": 'Item description',
+      "size": '52',
+      "color": 'white',
+      "price": '450'
+    },
+    {
+      "id": 3,
+      "title": 'Pants',
+      "src": '#',
+      "description": 'Item description',
+      "size": '30',
+      "color": 'yellow',
+      "price": '300'
+    },
+    {
+      "id": 4,
+      "title": 'Trainers',
+      "src": '#',
+      "description": 'Item description',
+      "size": '42',
+      "color": 'orange',
+      "price": '600'
+    },
+    {
+      "id": 5,
+      "title": 'Shirt',
+      "src": '#',
+      "description": 'Item description',
+      "size": '50',
+      "color": 'white',
+      "price": '200'
+    },
+    {
+      "id": 6,
+      "title": 'Shoes',
+      "src": '#',
+      "description": 'Item description',
+      "size": '42',
+      "color": 'blue',
+      "price": '200'
+    }
+]
