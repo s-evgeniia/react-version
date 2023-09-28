@@ -4,7 +4,7 @@ import MySelect from "./UI/select/MySelect";
 
 const ItemFilter = ({filter, setFilter}) => {
     return (
-        <div>
+        <div className="sort__items">
             <MyInput type="text"
                      value={filter.query}
                      onChange={e => setFilter({...filter, query: e.target.value})}

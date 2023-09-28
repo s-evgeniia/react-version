@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import '../styles/App.css';
 import SellItemsList from "../components/SellItemsList";
+import AddItemForm from "../components/AddItemForm";
 import ItemFilter from "../components/ItemFilter";
+import MyModal from "../components/UI/MyModal/MyModal";
+import MyButton from "../components/UI/button/MyButton";
 import {useItems} from "../hooks/useItems";
 import ItemService from "../API/ItemService";
 import Loader from "../Loader/Loader";
@@ -9,15 +12,17 @@ import {useFetching} from "../hooks/useFetching";
 import {getPageCount} from "../utils/pages";
 import Pagination from "../components/UI/pagination/Pagination";
 
-function Items() {
+function OtherF() {
     //Создание списка товаров с атрибутами размера, цвета, названия, описания и цены
     const [items, setItems] = useState([])
+    //{"id": 1, "title": 'Jacket', "src": '#', "body": 'Item description', "size": '42', "color": 'red', "price": '100'},
+    //{"id": 2, "title": 'T-shirt', "src": '#', "body": 'Item description', "size": '52', "color": 'white', "price": '450'}])
     const [filter, setFilter] = useState({sort: '', query: ''})
+    const [modal, setModal] = useState(false)
     const [totalPages, setTotalPages] = useState(0)
-    const [limit, setLimit] = useState(20)
+    const [limit, setLimit] = useState(10)
     const [page, setPage] = useState(1)
     const sortedAndSearchedItems = useItems(items, filter.sort, filter.query);
-    const itemsToB = [];
 
     const [fetchItems, isItemsLoading, itemError] = useFetching(async (limit, page) => {
         const response = await ItemService.getAll(limit, page);
@@ -30,10 +35,15 @@ function Items() {
         fetchItems(limit, page)
     }, [] )
 
-    //Добавление товара в корзину
-    const addToCart = (item) => {
-        itemsToB.push(item)
-        console.log(itemsToB)
+    //Реализация добавления новых товаров в список
+    const createItem = (newItem) => {
+        setItems([...items, newItem])
+        setModal(false)
+    }
+
+    //Удаление товара (например из корзины)
+    const removeItem = (item) => {
+        setItems(items.filter(i => i.id !== item.id))
     }
 
     //Реализация переключения страниц
@@ -44,6 +54,16 @@ function Items() {
 
     return (
         <div className="App">
+            <MyButton onClick={() => setModal(true)}>Add new item</MyButton>
+
+            {/*Реализация модального окна*/}
+            <MyModal
+                visible={modal}
+                setVisible={setModal}
+            >
+                {/*Реализация добавления новых товаров в список*/}
+                <AddItemForm create={createItem}/>
+            </MyModal>
 
             {/*Реализация сортировки и поиска по множеству*/}
             <ItemFilter
@@ -56,7 +76,7 @@ function Items() {
 
             {isItemsLoading
                 ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader /></div>
-                : <SellItemsList action={addToCart} items={sortedAndSearchedItems} mainTitle="Items" />
+                : <SellItemsList remove={removeItem} items={sortedAndSearchedItems} mainTitle="Items" />
             }
 
             <Pagination  page={page} changePage={changePage} totalPages={totalPages}/>
@@ -64,4 +84,4 @@ function Items() {
     );
 }
 
-export default Items;
+export default OtherF;

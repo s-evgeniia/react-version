@@ -1,10 +1,7 @@
 import React from 'react';
 import SellItem from "./SellItem";
-import MyButton from "./UI/button/MyButton";
-import {CSSTransition, TransitionGroup} from "react-transition-group";
-import nodeRef from "react"
 
-const SellItemsList = ({items, mainTitle, remove}) => {
+const SellItemsList = ({items, mainTitle, action}) => {
     //Если все товары удалить, то высвечивается надпись "Your basket is empty!"
     if (!items.length) {
         return (
@@ -16,24 +13,26 @@ const SellItemsList = ({items, mainTitle, remove}) => {
 
     return (
         <div>
-            <h1 style={{textAlign: "center"}}>
+            <h1 style={{textAlign: "center", paddingBottom: "15px"}}>
                 {mainTitle}
             </h1>
                 <div className="sell_items_list">
                     {items.map((item, index) =>
                             <SellItem
-                                remove={remove}
+                                action={action}
                                 number={index + 1}
                                 item={item}
                                 key={item.id}/>
                     )}
                 </div>
-                {/* Кнопка только для главной страницы*/}
-                <div className="center_btn">
-                    <MyButton>View more</MyButton>
-                </div>
+
         </div>
     );
 };
 
 export default SellItemsList;
+
+{/* Кнопка только для главной страницы*/}
+/*<div className="center_btn">
+    <MyButton>View more</MyButton>
+</div>*/

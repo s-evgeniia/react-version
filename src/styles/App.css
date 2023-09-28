@@ -43,7 +43,7 @@
     align-items: center;
 }
 
-/*Настройка распределения товаров на страницу*/
+/*Настройка распределения товаров на странице*/
 .sell_items_list {
     display: flex;
     gap: 30px;
@@ -59,15 +59,24 @@
     margin-top: 30px;
 }
 
+/*Пагинация*/
 .page__wrapper {
     margin-top: 30px;
     display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
 .page {
-    padding: 10px;
     border: 1px solid teal;
     cursor: pointer;
+    width: 30px;
+    height: auto;
+
+    /*Ориентация текста посередине*/
+    text-align: center;
+    padding-bottom: 4px;
+    padding-top: 4px;
 }
 
 .page__current {
@@ -75,15 +84,26 @@
     font-weight: bold;
 }
 
+/*Навигация*/
 .navbar {
     height: 50px;
     width: 100vw;
     display: flex;
     align-items: center;
     padding: 0 15px;
-    background: lightgray;
+    background: rgba(122, 85, 200, 0.5);
 }
 
 .navbar__links {
     margin-left: auto;
+    display: flex;
+    gap: 30px;
+}
+
+.sort__items {
+    display: flex;
+    gap: 40px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
